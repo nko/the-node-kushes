@@ -15,6 +15,7 @@
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script>
+      // Thanks http://dev.opera.com/articles/view/html5-canvas-painting/
       $(document).ready(function () {
         var win_height = window.innerHeight ? window.innerHeight : $(window).height();
         var win_width =  window.innerWidth ? window.innerWidth : $(window).width();
@@ -29,16 +30,57 @@
         //ctx.strokeStyle = "#0ff";
         //ctx.fillRect(0, 0, 150, 100);
         //ctx.strokeRect(win_width-150, win_height-100, 150, 100);
-        ctx.fillStyle    = '#00f';
-        ctx.font         = 'italic 30px sans-serif';
-        ctx.textBaseline = 'top';
-        ctx.fillText  ('Hello world!', 0, 0);
-        ctx.font         = 'bold 30px sans-serif';
-        ctx.strokeText('Hello world!', 0, 50);
-      });
+        ctx.font = 'bold 30px sans-serif';
+        ctx.strokeText('Click and move', 0, 50);
+
+      function pencil(context) {
+        var tool = this;
+        this.started = false;
+        this.context = context
+        this.mousedown = function (ev) {
+          context.beginPath();
+          context.moveTo(ev._x, ev._y);
+          tool.started = true;
+        }
+        this.mousemove = function (ev) {
+          if (tool.started) {
+            context.lineTo(ev._x, ev._y);
+            context.stroke();
+          }
+        }
+        this.mouseup = function (ev) {
+          if (tool.started) {
+            tool.mousemove(ev);
+            tool.started = false;
+          }
+        }
+      }
+
+      var tool = new pencil(ctx);
+
+      function ev_canvas (ev) {
+        if (ev.layerX || ev.layerX == 0) {
+          ev._x = ev.layerX;
+          ev._y = ev.layerY;
+        } else if (ev.offsetX || ev.offsetX == 0) {
+          ev._x = ev.offsetX;
+          ev._y = ev.offsetY;
+        }
+        var func = tool[ev.type];
+        if (func) {
+          func(ev);
+        }
+      }
+
+      surface.addEventListener('mousedown', ev_canvas, false);
+      surface.addEventListener('mousemove', ev_canvas, false);
+      surface.addEventListener('mouseup',   ev_canvas, false);
+
+    });
     </script>
   </head>
   <body>
+    <!--iframe src="http://google.com" width="100%" height="100%"-->
     <canvas id="surface" width="300" height="300">
       <p>Your webbrowser doesn't support canvas, a feature our application relies on.</p>
       <p>Please, consider installing a modern webbroser:</p>
