@@ -5,6 +5,7 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.bodyDecoder());
   app.use(app.router);
+  app.set('views', __dirname + '/client');
   app.use(express.staticProvider(__dirname + '/public'));
 });
 
