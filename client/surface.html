@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>PageTalk &raquo; <%= url %></title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      canvas {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var win_height = window.innerHeight ? window.innerHeight : $(window).height();
+        var win_width =  window.innerWidth ? window.innerWidth : $(window).width();
+        win_height = win_height - 4;
+        win_width = win_width - 4;
+        //alert(win_width + "x" + win_height);
+        var surface = $("#surface")[0];
+        surface.setAttribute("width", win_width + "px");
+        surface.setAttribute("height", win_height + "px");
+        var ctx = surface.getContext('2d');
+        //ctx.fillStyle = '#000';
+        //ctx.strokeStyle = "#0ff";
+        //ctx.fillRect(0, 0, 150, 100);
+        //ctx.strokeRect(win_width-150, win_height-100, 150, 100);
+        ctx.fillStyle    = '#00f';
+        ctx.font         = 'italic 30px sans-serif';
+        ctx.textBaseline = 'top';
+        ctx.fillText  ('Hello world!', 0, 0);
+        ctx.font         = 'bold 30px sans-serif';
+        ctx.strokeText('Hello world!', 0, 50);
+      });
+    </script>
+  </head>
+  <body>
+    <canvas id="surface" width="300" height="300">
+      <p>Your webbrowser doesn't support canvas, a feature our application relies on.</p>
+      <p>Please, consider installing a modern webbroser:</p>
+      <ul>
+        <li><a href="http://www.google.com/chrome">Chrome</a></li>
+        <li><a href="http://www.apple.com/safari">Safari</a></li>
+        <li><a href="http://www.mozilla.org/firefox">Firefox</a></li>
+      </ul>
+    </canvas>
+  </body>
+</html>

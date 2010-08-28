@@ -24,4 +24,8 @@ app.get('/', function(req, res){
   res.render('index.html', {'locals': {'times': 10}});
 });
 
+app.get('/surface', function(req, res){
+  res.render('surface.html', {'locals': {'url': 'google.com'}});
+});
+
 app.listen(3000);
