@@ -18,6 +18,7 @@ app.configure(function() {
 // });
 
 app.register('.html', require('ejs'));
+app.set('view options', {'layout': false});
 
 app.get('/', function(req, res){
   res.render('index.html', {'locals': {'times': 10}});
