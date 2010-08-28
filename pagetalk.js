@@ -20,7 +20,7 @@ app.configure(function() {
 app.register('.html', require('ejs'));
 
 app.get('/', function(req, res){
-  res.render('index.html', {'times': 10});
+  res.render('index.html', {'locals': {'times': 10}});
 });
 
 app.listen(3000);
