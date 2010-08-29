@@ -32,16 +32,16 @@ body:after {
   position: relative;
   padding-top: 40px;
   float: right;
-  width: 286px;
-  margin-left: 60px;
   z-index: -1;
 }
 
 #column-a-container {
   position: fixed;
+  width: 1px;
 }
 
 #logo-box {
+  float: right;
   background-color: #f8a185;
   color: #371003;
   font-family: 'Lobster', serif;
@@ -59,12 +59,12 @@ body:after {
 #column-b {
   position: relative;
   padding-top: 30px;
-  width: 800px;
+  width: 60%;
   float: right;
   overflow-x: hidden;
   z-index: 1;
 }
 
 .bar{
-  width: 1000px;
+  width: 100%;
 }
