@@ -133,6 +133,9 @@ body:after {
   background-color: none;
 }
 #add-bar {
+  padding: 5px;
+  font-family: 'Lobster', sans-serif;
+  font-size: 20px;
   cursor: pointer;
 }
 #add-bar:hover {
