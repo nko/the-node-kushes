@@ -110,12 +110,34 @@ body:after {
   padding-top: 30px;
   border-left: 2px solid #fc781a;
   width: 60%;
-  height: 800px;
+  min-height: 390px;
   float: right;
   overflow-x: hidden;
   z-index: 1;
 }
 
-.bar{
+.bar {
   width: 100%;
+}
+.bar input {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: 'Lobster', sans-serif;
+  font-size: 30px;
+  width: 80%;
+  border: none;
+  background: none;
+}
+.bar input:focus {
+  border: none;
+  background-color: none;
+}
+#add-bar {
+  cursor: pointer;
+}
+#add-bar:hover {
+  background-color: #808080 !important;
+}
+#add-bar:active {
+  background-color: #808080 !important;
 }
