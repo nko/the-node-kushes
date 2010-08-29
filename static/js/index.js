@@ -1,6 +1,7 @@
 nodevote = {'ui': {'handlers': {}}};
 nodevote.ui.handlers['create'] = {
   'click': function() {
+    console.log('foo');
     $('#voting-room-form').submit();
   }  
 }

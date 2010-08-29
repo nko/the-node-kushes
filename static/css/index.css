@@ -35,7 +35,6 @@ body:after {
 }
 
 #column-a {
-  position: relative;
   padding-top: 40px;
   float: right;
   z-index: -1;
@@ -47,8 +46,6 @@ body:after {
 }
 
 #logo-box {
-  -webkit-user-select: none;
-  -moz-user-select: none;
   float: right;
   background-color: #fc781a;
   color: #5a2601;
@@ -65,12 +62,12 @@ body:after {
 }
 
 .side-button {
-  -webkit-user-select: none;
+/*  -webkit-user-select: none;
   -moz-user-select: none;
-  float: right;
+*/  float: right;
   text-align: right;
-  color: #5a2601;
   font-family: 'Lobster', sans-serif;
+  color: #8c3b02;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -79,8 +76,15 @@ body:after {
   padding: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 90px;
   width: 230px;
+  color: #8c3b02;
+  cursor: pointer;
+}
+.side-button:hover {
+  color: #5a2601;
+}
+.side-button:active {
+  color: #5a2601;
 }
 
 .info-box {
