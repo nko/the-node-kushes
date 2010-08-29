@@ -30,6 +30,7 @@ body:after {
 }
 
 #column-a {
+/*  border: 1px solid #000;*/
   padding-top: 40px;
   float: left;
   width: 200px;
@@ -45,7 +46,7 @@ body:after {
   background-color: #f8a185;
   color: #371003;
   font-family: 'Lobster', serif;
-  font-size: 44px;
+  font-size: 70px;
   font-style: normal;
   font-weight: 400;
   text-shadow: none;
@@ -53,4 +54,12 @@ body:after {
   padding: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+#column-b {
+/*  border: 1px solid #000;*/
+  margin-left: 5px;
+  float: left;
+  width: 890px;
+  height: 2000px;
 }

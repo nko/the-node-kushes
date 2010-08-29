@@ -24,14 +24,4 @@ app.get('/', function(req, res){
   res.render('index.html', {'locals': {'times': 10}});
 });
 
-app.listen(3000);
-
-// boilerplate
-app_boiler = express.createServer();
-
-app_boiler.get('/', function(req, res){
-    res.send('git.init();<br><br>while (true) {<br>&nbsp;&nbsp;git.commit();<br>}');
-});
-
-//app.listen(3000);
-app_boiler.listen(80)
+app.listen(80);
