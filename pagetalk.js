@@ -42,6 +42,8 @@ http_server.get('/voting-room/:id', function(req, res) {
 
 http_server.post('/voting-room', function(req, res) {
   var voting_room_id = create_random_id(10);
+  while(poorsman_mongodb.voting_rooms[voting_room_id])
+    voting_room_id = create_random_id(10);
   var vr = poorsman_mongodb.voting_rooms[voting_room_id] = {};
   res.redirect('/voting-room/' + voting_room_id);
 });
