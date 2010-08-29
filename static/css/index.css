@@ -13,6 +13,12 @@ html {
 /*  src: local('Lobster'), url('/fonts/lobster-regular.ttf') format('truetype');*/
   src: local('Lobster'), url('http://themes.googleusercontent.com/font?kit=X-CahsKZZcJfSyZ_tX4ptg') format('truetype');
 }
+@font-face {
+  font-family: 'Old Standard TT';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Old Standard TT'), url('http://themes.googleusercontent.com/font?kit=n6RTCDcIPWSE8UNBa4k-DFFvkgauTbNF96NzJdlwv7E') format('truetype');
+}
 body {
 	font: normal 95% helvetica, sans-serif;
 	color: #000;
@@ -37,14 +43,16 @@ body:after {
 
 #column-a-container {
   position: fixed;
-  width: 1px;
+  width: 0px;
 }
 
 #logo-box {
+  -webkit-user-select: none;
+  -moz-user-select: none;
   float: right;
   background-color: #fc781a;
   color: #5a2601;
-  font-family: 'Lobster', serif;
+  font-family: 'Lobster', sans-serif;
   font-size: 70px;
   font-style: normal;
   font-weight: 400;
@@ -56,10 +64,49 @@ body:after {
   height: 90px;
 }
 
+.side-button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  float: right;
+  text-align: right;
+  color: #5a2601;
+  font-family: 'Lobster', sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: none;
+  letter-spacing: -0.05em;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 90px;
+  width: 230px;
+}
+
+.info-box {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  float: right;
+  text-align: right;
+  color: #5a2601;
+  font-family: 'Lobster', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: none;
+  letter-spacing: 0.00em;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 250px;
+}
+
 #column-b {
   position: relative;
   padding-top: 30px;
+  border-left: 2px solid #fc781a;
   width: 60%;
+  height: 800px;
   float: right;
   overflow-x: hidden;
   z-index: 1;
