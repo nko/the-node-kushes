@@ -8,9 +8,14 @@ nodevote.ui.handlers['create'] = {
 nodevote.ui.handlers['add-bar'] = {
   'click': function() {
     var color = nodevote.ui.next_random_color();
-    var bar = nodevote.ui.create_bar(60, color.back);
-    $('#add-bar').before(bar);
-    bar.find('input').css('color', '#' + color.fore);
+    if(color) {
+      var bar = nodevote.ui.create_bar(60, color.back);
+      $('#add-bar').before(bar);
+      bar.find('input').css('color', '#' + color.fore);
+      bar.find('input').focus();
+    } else {
+      $('#add-bar').hide();
+    }
   }
 };
 nodevote.ui.colors = [
@@ -33,9 +38,22 @@ nodevote.ui.colors = [
     nodevote.ui.colors[i] = {'back': _colors[i][0], 'fore': _colors[i][1]};
   }
 })();
-nodevote.ui.selected_colors = {};
+nodevote.ui.selected_colors = {
+  getLength: function() {
+    var c = 0;
+    for(var p in this) {
+      if(this.hasOwnProperty(p) && typeof(this[p]) != 'function') {
+        c++;
+      }
+    }
+    return c;
+  }
+};
 nodevote.ui.next_random_color = function() {
   var len = nodevote.ui.colors.length;
+  if(len == nodevote.ui.selected_colors.getLength()) {
+    return null;
+  }
   var i = Math.floor(Math.random()*len);
   while(nodevote.ui.selected_colors[nodevote.ui.colors[i].back]) {
     i = Math.floor(Math.random()*len);
