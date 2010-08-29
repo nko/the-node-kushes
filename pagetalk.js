@@ -6,7 +6,7 @@ app.configure(function() {
   app.use(express.bodyDecoder());
   app.use(app.router);
   app.set('views', __dirname + '/client');
-  app.use(express.staticProvider(__dirname + '/public'));
+  app.use(express.staticProvider(__dirname + '/static'));
 });
 
 // app.configure('development', function(){

@@ -1,0 +1,56 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+html {
+  overflow-y: scroll;
+  /* Always show a vertical scrollbar in Firefox, Chrome, Safari and Opera */
+}
+@font-face {
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Lobster'), url('/fonts/lobster-regular.ttf') format('truetype');
+}
+body {
+  margin: 15px auto;
+  width: 1200px;
+	font: normal 95% helvetica, sans-serif;
+	color: #000;
+  background-color: #ececec;
+}
+
+body:after { 
+  content: "."; 
+  visibility: hidden; 
+  display: block; 
+  clear: both; 
+  height: 0px; 
+  font-size: 0px;
+}
+
+#column-a {
+  padding-top: 40px;
+  float: left;
+  width: 200px;
+  margin-right: 5px;
+  margin-left: 60px;
+}
+
+#column-a-container {
+  position: fixed;
+}
+
+#logo-box {
+  background-color: #f8a185;
+  color: #371003;
+  font-family: 'Lobster', serif;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: none;
+  letter-spacing: -0.05em;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
