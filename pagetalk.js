@@ -44,7 +44,7 @@ http_server.post('/voting-room', function(req, res) {
   var options = JSON.parse(req.body);
   var voting_room_id = create_random_id(10);
   var vr = poorsman_mongodb.voting_rooms[voting_room_id] = {};
-  for(var i = 0, len = options.length; i++) {
+  for(var i = 0, len = options.length; i < len; i++) {
     vr[options[i]] = options[i];
   }
   res.redirect('/voting-room/' + voting_room_id);
