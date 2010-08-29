@@ -10,7 +10,8 @@ html {
   font-family: 'Lobster';
   font-style: normal;
   font-weight: normal;
-  src: local('Lobster'), url('/fonts/lobster-regular.ttf') format('truetype');
+/*  src: local('Lobster'), url('/fonts/lobster-regular.ttf') format('truetype');*/
+  src: local('Lobster'), url('http://themes.googleusercontent.com/font?kit=X-CahsKZZcJfSyZ_tX4ptg') format('truetype');
 }
 body {
 	font: normal 95% helvetica, sans-serif;
@@ -28,10 +29,12 @@ body:after {
 }
 
 #column-a {
+  position: relative;
   padding-top: 40px;
   float: right;
   width: 286px;
   margin-left: 60px;
+  z-index: -1;
 }
 
 #column-a-container {
@@ -50,14 +53,16 @@ body:after {
   padding: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
+  height: 90px;
 }
 
 #column-b {
+  position: relative;
   padding-top: 30px;
   width: 800px;
   float: right;
-  height: 2000px;
-  overflow-x: auto;
+  overflow-x: hidden;
+  z-index: 1;
 }
 
 .bar{
