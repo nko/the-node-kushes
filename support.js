@@ -9,4 +9,4 @@ require.paths.unshift(
 );
 express = require('express');
 JSON = require('json');
-SocketIO = require('socket.io');
+io = require('socket.io');

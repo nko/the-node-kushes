@@ -1,7 +1,22 @@
 nodevote = {'ui': {'handlers': {}}};
 nodevote.ui.handlers['create'] = {
   'click': function() {
-    console.log('foo');
+    var options = [];
+    var bars = $('.bar');
+    for(var option, i = 0, len = bars.length; i < len; i++) {
+      option = {};
+      option.title = $(bars[i]).find('input').val();
+      option.colors = {
+        'back': $(bars[i]).css('background-color'),
+        'fore': $(bars[i]).find('input').css('color')
+      }
+      options.push(option);
+    }
+    var options_json = encodeURIComponent(JSON.stringify({'options': options}));
+    console.log('options_json: ' + options_json);
+    $('#voting-room-form').append(
+        '<input type="hidden" name="voting_room_data" value="' + options_json + '">'
+      );
     $('#voting-room-form').submit();
   }  
 }

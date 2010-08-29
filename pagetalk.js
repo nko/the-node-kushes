@@ -37,34 +37,40 @@ http_server.get('/', function(req, res) {
 });
 
 http_server.get('/voting-room/:id', function(req, res) {
+  if(!poorsman_mongodb.voting_rooms[req.params.id]) {
+    res.redirect('/');
+    return;
+  }
   res.render('voting-room.html', {'locals': {'voting_room_id': req.params.id}});
 });
 
 http_server.post('/voting-room', function(req, res) {
+  var voting_room_data = JSON.parse(decodeURIComponent(req.body.voting_room_data));
   var voting_room_id = create_random_id(10);
   while(poorsman_mongodb.voting_rooms[voting_room_id])
     voting_room_id = create_random_id(10);
-  var vr = poorsman_mongodb.voting_rooms[voting_room_id] = {};
+  var vr = poorsman_mongodb.voting_rooms[voting_room_id] = voting_room_data;
+  vr.voting_room_id = voting_room_id;
   res.redirect('/voting-room/' + voting_room_id);
 });
 
 http_server.listen(80);
 
-socket_server = SocketIO.listen(http_server);
+socket_server = io.listen(http_server);
 
 socket_server.on('connection', function(client) {
   poorsman_mongodb.connected_clients[client.sessionId] = {};
   client.on('message', function(message) {
-    var message = JSON.parse(message) || {};
     var voting_room_id = message.voting_room_id;
     poorsman_mongodb.connected_clients[client.sessionId] = message;
     if(message.pick) {
       if(poorsman_mongodb.voting_rooms[voting_room_id][message.pick] == undefined) {
         poorsman_mongodb.voting_rooms[voting_room_id][message.pick] = 0;
       }
-      poorsman_mongodb.voting_rooms[voting_room_id][message.pick]++;
-      client.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);
+      poorsman_mongodb.voting_rooms[voting_room_id][message.pick]++; 
     }
+    console.log('poorsman_mongodb.voting_rooms[voting_room_id]: ' + poorsman_mongodb.voting_rooms[voting_room_id]);
+    client.broadcast({'omg': 1});  
   });
   client.on('disconnect', function() {
     var message = poorsman_mongodb.connected_clients[client.sessionId];
