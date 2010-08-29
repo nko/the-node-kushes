@@ -13,8 +13,6 @@ html {
   src: local('Lobster'), url('/fonts/lobster-regular.ttf') format('truetype');
 }
 body {
-  margin: 15px auto;
-  width: 1200px;
 	font: normal 95% helvetica, sans-serif;
 	color: #000;
   background-color: #ececec;
@@ -30,11 +28,9 @@ body:after {
 }
 
 #column-a {
-/*  border: 1px solid #000;*/
   padding-top: 40px;
-  float: left;
-  width: 200px;
-  margin-right: 5px;
+  float: right;
+  width: 286px;
   margin-left: 60px;
 }
 
@@ -57,9 +53,13 @@ body:after {
 }
 
 #column-b {
-/*  border: 1px solid #000;*/
-  margin-left: 5px;
-  float: left;
-  width: 890px;
+  padding-top: 30px;
+  width: 800px;
+  float: right;
   height: 2000px;
+  overflow-x: auto;
+}
+
+.bar{
+  width: 1000px;
 }
