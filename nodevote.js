@@ -45,6 +45,7 @@ http_server.get('/voting-room/:id', function(req, res) {
 });
 
 http_server.post('/voting-room', function(req, res) {
+  console.log('decodeURIComponent(req.body.voting_room_data): ' + decodeURIComponent(req.body.voting_room_data));
   var voting_room_data = JSON.parse(decodeURIComponent(req.body.voting_room_data));
   var voting_room_id = create_random_id(10);
   while(poorsman_mongodb.voting_rooms[voting_room_id])
