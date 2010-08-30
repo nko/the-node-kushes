@@ -49,7 +49,13 @@ http_server.post('/voting-room', function(req, res) {
   var voting_room_id = create_random_id(10);
   while(poorsman_mongodb.voting_rooms[voting_room_id])
     voting_room_id = create_random_id(10);
-  var vr = poorsman_mongodb.voting_rooms[voting_room_id] = voting_room_data;
+  var vr = poorsman_mongodb.voting_rooms[voting_room_id] = {
+    'voting_room_id': voting_room_id,
+    'options': {}
+  };
+  for(var i = 0, len = voting_room_data.options.length; i < len; i++) {
+    vr.options[voting_room_data.options[i].title] = {'votes': 0};
+  }
   vr.voting_room_id = voting_room_id;
   res.redirect('/voting-room/' + voting_room_id);
 });
@@ -62,10 +68,7 @@ socket_server.on('connection', function(client) {
     var voting_room_id = message.voting_room_id;
     poorsman_mongodb.connected_clients[client.sessionId] = message;
     if(message.pick) {
-      if(poorsman_mongodb.voting_rooms[voting_room_id][message.pick] == undefined) {
-        poorsman_mongodb.voting_rooms[voting_room_id][message.pick] = 0;
-      }
-      poorsman_mongodb.voting_rooms[voting_room_id][message.pick]++; 
+      poorsman_mongodb.voting_rooms[voting_room_id].options[message.pick].votes++; 
     }
     client.broadcast({'options': poorsman_mongodb.voting_rooms[voting_room_id]});  
   });
@@ -73,7 +76,7 @@ socket_server.on('connection', function(client) {
     var message = poorsman_mongodb.connected_clients[client.sessionId];
     var voting_room_id = message.voting_room_id;
     if(message.pick) {
-      poorsman_mongodb.voting_rooms[voting_room_id][message.pick]--;
+      poorsman_mongodb.voting_rooms[voting_room_id].options[message.pick].votes--;
     }
     client.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);
   });
@@ -84,8 +87,8 @@ socket_server.on('connection', function(client) {
 
 setInterval(function() {
   for(var voting_room_id in poorsman_mongodb.voting_rooms) {
-    socket_server.broadcast({'options': poorsman_mongodb.voting_rooms[voting_room_id]});
+    socket_server.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);
   }
-}, 10000)
+}, 10000);
 
 http_server.listen(80);

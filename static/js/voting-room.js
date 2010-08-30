@@ -12,8 +12,13 @@ nodevote.ui.create_bar = function(height, color) {
 $(document).ready(function() {
   socket_client = new io.Socket(null, {port: 80});
   socket_client.connect();
-  on_message = function(options) {
-    
+  var on_message = function(options) {
+    var total_height = $(window).height();
+    var bar;
+    for(var i = 0, len = options.options.length; i < len; i++) {
+      bar = nodevote.ui.create_bar(60, options.options.fore);
+      bar
+    }
   }
   socket_client.on('message', on_message);
   nodevote.ui.handlers['freeze'] = {
