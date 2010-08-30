@@ -2,7 +2,7 @@ nodevote = {'ui': {'handlers': {}}};
 nodevote.ui.handlers['create'] = {
   'click': function() {
     var options = [];
-    var bars = $('.bar');
+    var bars = $('.voting-option');
     for(var option, i = 0, len = bars.length; i < len; i++) {
       option = {};
       option.title = $(bars[i]).find('input').val();
@@ -79,7 +79,7 @@ nodevote.ui.next_random_color = function() {
 }
 nodevote.ui.create_bar = function(height, color) {
   return $(
-    '<div class="bar" style="height: ' + height + 'px; background-color: #' + color + ';">' +
+    '<div class="bar voting-option" style="height: ' + height + 'px; background-color: #' + color + ';">' +
     '<input type="input"></input>' +
     '</div>'
   );

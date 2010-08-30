@@ -51,12 +51,17 @@ http_server.post('/voting-room', function(req, res) {
     voting_room_id = create_random_id(10);
   var vr = poorsman_mongodb.voting_rooms[voting_room_id] = {
     'voting_room_id': voting_room_id,
-    'options': {}
+    'options': {},
   };
   for(var i = 0, len = voting_room_data.options.length; i < len; i++) {
-    vr.options[voting_room_data.options[i].title] = {'votes': 0};
+    vr.options[voting_room_data.options[i].title] = {
+      'votes': 0,
+      'title': voting_room_data.options[i].title,
+      'colors': voting_room_data.options[i].colors
+    };
   }
   vr.voting_room_id = voting_room_id;
+  console.log('poorsman_mongodb.voting_rooms[voting_room_id]: ' + poorsman_mongodb.voting_rooms[voting_room_id]);
   res.redirect('/voting-room/' + voting_room_id);
 });
 
@@ -70,7 +75,7 @@ socket_server.on('connection', function(client) {
     if(message.pick) {
       poorsman_mongodb.voting_rooms[voting_room_id].options[message.pick].votes++; 
     }
-    client.broadcast({'options': poorsman_mongodb.voting_rooms[voting_room_id]});  
+    client.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);  
   });
   client.on('disconnect', function() {
     var message = poorsman_mongodb.connected_clients[client.sessionId];
@@ -81,7 +86,7 @@ socket_server.on('connection', function(client) {
     client.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);
   });
   for(var voting_room_id in poorsman_mongodb.voting_rooms) {
-    socket_server.broadcast({'options': poorsman_mongodb.voting_rooms[voting_room_id]});
+    socket_server.broadcast(poorsman_mongodb.voting_rooms[voting_room_id]);
   }
 });
 
