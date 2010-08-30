@@ -148,3 +148,15 @@ body:after {
 #add-bar:active {
   background-color: #808080 !important;
 }
+#logo-box-link {
+  text-decoration: none;
+}
+#logo-box-link:visited {
+  text-decoration: none;
+}
+#logo-box-link:hover {
+  text-decoration: none;
+}
+#logo-box-link:active {
+  text-decoration: none;
+}
