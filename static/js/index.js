@@ -24,7 +24,7 @@ nodevote.ui.handlers['add-bar'] = {
   'click': function() {
     var color = nodevote.ui.next_random_color();
     if(color) {
-      var bar = nodevote.ui.create_bar(60, color.back);
+      var bar = nodevote.ui.create_bar(50, color.back);
       $('#add-bar').before(bar);
       bar.find('input').css('color', '#' + color.fore);
       bar.find('input').focus();

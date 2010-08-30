@@ -1,2 +1,2 @@
 require('./support');
-require('./pagetalk');
+require('./nodevote');

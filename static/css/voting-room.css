@@ -110,14 +110,14 @@ body:after {
   padding-top: 30px;
   border-left: 2px solid #fc781a;
   width: 60%;
-  min-height: 390px;
+  min-height: 420px;
   float: right;
   overflow-x: hidden;
   z-index: 1;
 }
 
 .bar {
-  padding: 5px 5px 5px 5px !important;
+  padding: 5px 5px 5px 15px !important;
   font-family: 'Lobster', sans-serif;
   font-size: 35px;
   cursor: pointer;
@@ -147,27 +147,4 @@ body:after {
 }
 #add-bar:active {
   background-color: #808080 !important;
-}
-#message {
-  color: #555;
-  font-style: italic;
-  font-size: 18px;
-  padding: 10px;
-  width: 500px;
-}
-#message a {
-  text-decoration: none;
-  font-weight: bold;
-}
-#message a:hover {
-  font-weight: bold;
-  color: #000;
-}
-#message a:active {
-  text-decoration: none;
-  font-weight: bold;
-  color: #000;
-}
-#message a:visited {
-  font-weight: bold;
 }
