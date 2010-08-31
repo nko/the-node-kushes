@@ -23,5 +23,4 @@ sys = require("sys");
 express = require('express');
 JSON = require('json');
 io = require('socket.io');
-hashlib = require("hashlib");
 redis = require("redis-client");
