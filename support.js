@@ -14,10 +14,7 @@ require.paths.unshift(
   
   // http://github.com/kriszyp/commonjs-utils
   './lib/commonjs-utils/lib',
-  
-  // http://github.com/brainfucker/hashlib
-  './lib/hashlib/build/default', // need to run 'make' first
-  
+    
   // http://github.com/fictorial/redis-node-client
   './lib/redis-node-client/lib'
   
